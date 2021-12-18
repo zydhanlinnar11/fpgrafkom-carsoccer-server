@@ -49,9 +49,17 @@ io.on('connection', (socket) => {
 
   socket.on('update-input', (roomID, keyMap) => {
     //   socket.
-    console.log(keyMap)
+    // console.log(keyMap)
     const clientNumber = io.sockets.adapter.rooms.get(roomID)?.size
-    console.log(roomID)
+    // console.log(roomID)
     socket.to(roomID).emit('receive-input', keyMap)
+  })
+
+  socket.on('update-pos', (roomID, posInfo) => {
+    //   socket.
+    // console.log(posInfo)
+    const clientNumber = io.sockets.adapter.rooms.get(roomID)?.size
+    // console.log(roomID)
+    socket.to(roomID).emit('receive-pos', posInfo)
   })
 })
